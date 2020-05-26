@@ -1,53 +1,62 @@
 :root {
-    --black: #150605;
-    --red: #EA453C;
-    --pink: #F47B6E;
+    --black     : #150605;
+    --red       : #EA453C;
+    --pink      : #F47B6E;
     --light-blue: #EFFBFE;
-    --blue: #ACE6EC;
+    --blue      : #ACE6EC;
 }
 
-html, body {
+html,
+body {
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+    margin     : 0;
+    padding    : 0;
+    overflow   : hidden;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--pink);
-    color: var(--light-blue);
-    padding: 0 10px;
-    -webkit-box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
-    -moz-box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
-    box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
+    display           : flex;
+    justify-content   : space-between;
+    align-items       : center;
+    background-color  : var(--pink);
+    color             : var(--light-blue);
+    padding           : 0 10px;
+    -webkit-box-shadow: 0px 2px 10px -5px rgba(21, 6, 5, 1);
+    -moz-box-shadow   : 0px 2px 10px -5px rgba(21, 6, 5, 1);
+    box-shadow        : 0px 2px 10px -5px rgba(21, 6, 5, 1);
 }
 
 a {
     text-decoration: none;
 }
 
-a:visited { color: var(--light-blue); }
-a:hover { color: var(--light-blue); }
-a:active { color: var(--light-blue); }
+a:visited {
+    color: var(--light-blue);
+}
+
+a:hover {
+    color: var(--light-blue);
+}
+
+a:active {
+    color: var(--light-blue);
+}
 
 .view {
     box-sizing: border-box;
-    padding: 16px;
-    height: 100%;
+    padding   : 16px;
+    height    : 100%;
 }
 
 .searcher-container {
-    display: flex;
+    display       : flex;
     flex-direction: column;
-    height: 100%;
-    align-items: center;
+    height        : 100%;
+    align-items   : center;
 
-    width: 60%;
+    width : 60%;
     margin: 16px auto 0 auto;
-} 
+}
 
 .searcher-container__searcher {
     flex: 0 0 auto;
@@ -55,9 +64,9 @@ a:active { color: var(--light-blue); }
 
 .searcher-container__results {
     margin-top: 16px;
-    flex: 0 1 auto;
+    flex      : 0 1 auto;
     overflow-y: auto;
-    width: 100%;
+    width     : 100%;
 }
 
 .results-term {
@@ -67,4 +76,145 @@ a:active { color: var(--light-blue); }
 .resuts-index,
 .results-term__key {
     font-weight: bolder;
+}
+
+/*********************************
+***** APP STYLES RESPONSIVE  *****
+**********************************/
+body {
+    font-family     : 'Monserrat', sans-serif;
+    background-image: url('/assets/img/fondo_gris2.jpg');
+}
+
+header {
+    margin          : auto;
+    margin-left     : auto;
+    vertical-align  : middle;
+    margin-right    : auto;
+    color           : #70ad1c;
+    font-family     : "Times New Roman", Times, serif;
+    font-size       : 35px;
+    background-image: url('/assets/img/Fondo.png');
+    height          : 10vh;
+}
+
+/*********************************
+******* APP STYLES  **************
+**********************************/
+
+button {
+    display      : block;
+    margin       : 1em 2em;
+    padding      : 1em 2em;
+    width        : 5em;
+    font-size    : 1em;
+    color        : white;
+    text-align   : center;
+    border-radius: 1.5em;
+}
+
+button:focus {
+    outline: none;
+}
+
+.control-panel {
+    float      : left;
+    padding-top: 10px;
+}
+
+/* .titulo-panel {
+      text-align:center;
+      padding: auto;
+      margin: auto;
+      margin-left: auto;
+      vertical-align: middle;
+      margin-right: auto;
+      color: #70ad1c;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 35px;
+      background-image: url('/assets/img/Fondo.png');
+      height: 15%;
+  } */
+
+.datos-panel {
+    position       : relative;
+    left           : 200px;
+    text-align     : center;
+    font-family    : "Times New Roman", Times, serif;
+    font-size      : 65px;
+    letter-spacing : 2px;
+    word-spacing   : 2px;
+    font-weight    : 700;
+    text-decoration: none;
+    font-style     : normal;
+    font-variant   : normal;
+    text-transform : none;
+    float          : left;
+    padding-top    : 50px;
+}
+
+.datos-panelt3 {
+    text-align     : center;
+    font-family    : "Times New Roman", Times, serif;
+    font-size      : 35px;
+    letter-spacing : 2px;
+    word-spacing   : 2px;
+    font-weight    : 700;
+    text-decoration: none;
+    font-style     : normal;
+    font-variant   : normal;
+    text-transform : none;
+    float          : left;
+    padding-top    : 20px;
+    color          : #70ad1c;
+}
+
+.datos-panelt0 {
+    display: inline-block;
+    color  : #FFFFFF;
+}
+
+.datos-panelt1 {
+    display: inline-block;
+    color  : #70ad1c;
+}
+
+.traffic-light {
+    /*float: left;
+    margin: 30px 0;
+    padding: 20px;
+    width: 200px;
+    height: 550px;
+    background-color: #333;
+    border-radius: 40px;
+    */
+    position  : relative;
+    left      : 1300px;
+    margin    : 20px 0;
+    padding   : 15px;
+    width     : 200px;
+    height    : 450px;
+    background: url('/assets/img/traffic-light.png') 0 0;
+}
+
+.bulb {
+    margin-left     : 29px;
+    margin-top      : 73.3px;
+    width           : 137px;
+    height          : 137px;
+    background-color: #111;
+    border-radius   : 50%;
+    transition      : background 500ms;
+    opacity         : 0.7;
+}
+
+.bulb2 {
+    margin-left     : 29px;
+    margin-top      : 17px;
+    width           : 137px;
+    height          : 137px;
+    background-color: #111;
+    border-radius   : 50%;
+    transition      : background 500ms;
+    opacity         : 0.7;
 }
