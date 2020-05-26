@@ -25,11 +25,6 @@ function Main() {
 
     return (
         <Fragment>
-            {/* <div className="titulo-panel">
-                <div className="titulo-panel">
-                    <img src={logo} height="100" width="100" />
-                </div>
-            </div> */}
 
             <div className="datos-panel">
                 <div className="datos-panelt0"> Aforo Actual </div>
@@ -69,12 +64,6 @@ function Main() {
             </div>
 
             {getTrafficLights()}
-
-            <div className="titulo-panel">
-                Horario Apertura {apertura} - {cierre}
-                <br />
-                    Aforo Máximo {maxAforo}
-            </div>
 
         </Fragment>
     );

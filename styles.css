@@ -4,6 +4,8 @@
     --pink      : #F47B6E;
     --light-blue: #EFFBFE;
     --blue      : #ACE6EC;
+
+    --hefame-color: #ecd033;
 }
 
 html,
@@ -12,6 +14,10 @@ body {
     margin     : 0;
     padding    : 0;
     overflow   : hidden;
+}
+
+p {
+    margin: 0;
 }
 
 header {
@@ -81,21 +87,35 @@ a:active {
 /*********************************
 ***** APP STYLES RESPONSIVE  *****
 **********************************/
+
+
 body {
     font-family     : 'Monserrat', sans-serif;
     background-image: url('/assets/img/fondo_gris2.jpg');
 }
 
 header {
-    margin          : auto;
-    margin-left     : auto;
-    vertical-align  : middle;
-    margin-right    : auto;
-    color           : #70ad1c;
-    font-family     : "Times New Roman", Times, serif;
-    font-size       : 35px;
-    background-image: url('/assets/img/Fondo.png');
-    height          : 10vh;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    height         : 10vh;
+
+    background-color: var(--hefame-color);
+}
+
+footer {
+    position: absolute;
+    bottom  : 0;
+    min-height  : 10vh;
+    width   : 100%;
+
+    font-size: 48px;
+    color: #70ad1c;
+    background-color: var(--hefame-color);
+}
+
+footer > .info {
+    text-align: center;
 }
 
 /*********************************
@@ -121,20 +141,6 @@ button:focus {
     float      : left;
     padding-top: 10px;
 }
-
-/* .titulo-panel {
-      text-align:center;
-      padding: auto;
-      margin: auto;
-      margin-left: auto;
-      vertical-align: middle;
-      margin-right: auto;
-      color: #70ad1c;
-      font-family: "Times New Roman", Times, serif;
-      font-size: 35px;
-      background-image: url('/assets/img/Fondo.png');
-      height: 15%;
-  } */
 
 .datos-panel {
     position       : relative;
