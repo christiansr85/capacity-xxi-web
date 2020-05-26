@@ -1,11 +1,15 @@
 import React, { Fragment } from 'react';
 
+import TrafficLights from '../components/TrafficLights';
+
+import imgIconsPeople from '../assets/img/icons-people.png';
+import imgEnter from '../assets/img/Enter.png';
+import imgExit from '../assets/img/Exit.png';
+
 function Main() {
     const aforoActual = 3;
     const entradas = 4;
     const salidas = -1;
-    const apertura = '80:00';
-    const cierre = '20:00';
     const maxAforo = '60';
 
     function getTrafficLights() {
@@ -26,44 +30,34 @@ function Main() {
     return (
         <Fragment>
 
-            <div className="datos-panel">
-                <div className="datos-panelt0"> Aforo Actual </div>
-                <div className="datos-panelt1">{aforoActual}</div>
+            <div className="main">
 
                 <div>
-
+                    <span>Aforo Actual  {aforoActual}</span>
                 </div>
 
-                {/* <table>
-                    <tbody>
-                        <tr>
-                            <th style="width: 40%;">
-                                <div> <img src="/assets/img/icons-people.png" height="200" width="200" /> </div>
-                            </th>
-                            <th style="width: 10%;"> &nbsp; </th>
-                            <th style="width: 40%;">
-                                <table align="right">
-                                    <tbody>
-                                        <tr>
-                                            <td> <img src="/assets/img/Enter.png" height="100" width="100" /> </td>
-                                            <td style="align:center;"> <h2> Entradas </h2>  </td>
-                                            <td className="datos-panelt3">{entradas}</td>
-                                        </tr>
-                                        <tr>
-                                            <td> <img src="/assets/img/Exit.png" height="100" width="100" /> </td>
-                                            <td> <h2> Salidas </h2> </td>
-                                            <td className="datos-panelt3" >{salidas}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table> */}
+                <div>
+                    <img src={imgIconsPeople} height="200" width="200" />
+                </div>
+
+                <div>
+                    <div>
+                        <img src={imgEnter} height="100" width="100" />
+                        <span>Entradas</span>
+                        <span>{entradas}</span>
+                    </div>
+                    <div>
+                        <img src={imgExit} height="100" width="100" />
+                        <span>Salidas</span>
+                        <span>{salidas}</span>
+                    </div>
+                </div>
+
+                <div>
+                    <TrafficLights />
+                </div>
 
             </div>
-
-            {getTrafficLights()}
 
         </Fragment>
     );
