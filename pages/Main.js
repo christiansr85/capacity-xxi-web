@@ -12,28 +12,13 @@ function Main() {
     const salidas = -1;
     const maxAforo = '60';
 
-    function getTrafficLights() {
-        if (aforoActual >= maxAforo) {
-            return <div className="traffic-light">
-                <div id="stopLight" className="bulb"></div>
-                <div id="goLight" className="bulb2"></div>
-            </div>
-        }
-        else {
-            <div className="traffic-light">
-                <div id="stopLight" className="bulb"></div>
-                <div id="goLight" className="bulb2"></div>
-            </div>
-        }
-    }
-
     return (
         <Fragment>
 
             <div className="main">
 
-                <div>
-                    <span>Aforo Actual  {aforoActual}</span>
+                <div className="main__capacity">
+                    <span className="main__capacity-item">Aforo Actual</span><span className="main__capacity-item main__capacity-data">{aforoActual}</span>
                 </div>
 
                 <div>
@@ -54,7 +39,7 @@ function Main() {
                 </div>
 
                 <div>
-                    <TrafficLights />
+                    <TrafficLights pass="true"/>
                 </div>
 
             </div>
