@@ -25,13 +25,13 @@ function Main() {
                     <img src={imgIconsPeople} height="200" width="200" />
                 </div>
 
-                <div>
-                    <div>
+                <div className="access-counters">
+                    <div className="access-counters__item">
                         <img src={imgEnter} height="100" width="100" />
                         <span>Entradas</span>
                         <span>{entradas}</span>
                     </div>
-                    <div>
+                    <div className="access-counters__item">
                         <img src={imgExit} height="100" width="100" />
                         <span>Salidas</span>
                         <span>{salidas}</span>
