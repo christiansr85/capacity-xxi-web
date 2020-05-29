@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import TrafficLights from '../components/TrafficLights';
 
@@ -7,10 +7,20 @@ import imgEnter from '../assets/img/Enter.png';
 import imgExit from '../assets/img/Exit.png';
 
 function Main() {
-    const [aforoActual, setAforoActual] = useState(3);
-    const [entradas, setEntradas] = useState(4);
-    const [salidas, setSalidas] = useState(-1);
+    const [aforoActual, setAforoActual] = useState(0);
+    const [entradas, setEntradas] = useState(0);
+    const [salidas, setSalidas] = useState(0);
     const [maxAforo, setMaxAforo] = useState('60');
+
+    useEffect(() => {
+        fetch('http://localhost:4000/register/entrances')
+            .then(res => res.json())
+            .then(res => setEntradas(res.entrances));
+
+        fetch('http://localhost:4000/register/dismissals')
+            .then(res => res.json())
+            .then(res => setSalidas(res.dismissals));
+    }, []);
 
     return (
         <Fragment>
