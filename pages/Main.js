@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import TrafficLights from '../components/TrafficLights';
 
@@ -7,10 +7,10 @@ import imgEnter from '../assets/img/Enter.png';
 import imgExit from '../assets/img/Exit.png';
 
 function Main() {
-    const aforoActual = 3;
-    const entradas = 4;
-    const salidas = -1;
-    const maxAforo = '60';
+    const [aforoActual, setAforoActual] = useState(3);
+    const [entradas, setEntradas] = useState(4);
+    const [salidas, setSalidas] = useState(-1);
+    const [maxAforo, setMaxAforo] = useState('60');
 
     return (
         <Fragment>
@@ -38,8 +38,9 @@ function Main() {
                     </div>
                 </div>
 
+
                 <div>
-                    <TrafficLights pass="true"/>
+                    <TrafficLights pass="true" />
                 </div>
 
             </div>
