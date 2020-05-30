@@ -1,8 +1,8 @@
 import React from 'react';
 
 function TrafficLights({ pass }) {
-    let cssClass = '';
-    if (pass !== undefined) {
+    let cssClass = 'traffic-lights';
+    if (pass !== null) {
         cssClass = pass ? 'traffic-lights traffic-lights--pass' : 'traffic-lights traffic-lights--stop';
     }
     return (

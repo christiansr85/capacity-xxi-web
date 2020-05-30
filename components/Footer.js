@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../Context';
 
-function Footer({ apertura, cierre, maxAforo }) {
+function Footer() {
+    const { maxAforo, apertura, cierre } = useContext(Context);
+
     return (
         <footer>
             <div className="info">

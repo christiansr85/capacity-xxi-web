@@ -10,9 +10,19 @@ function Main({ maxAforo }) {
     const [aforoActual, setAforoActual] = useState(0);
     const [entradas, setEntradas] = useState(0);
     const [salidas, setSalidas] = useState(0);
-    const [letPass, setLetPass] = useState();
+    const [letPass, setLetPass] = useState(null);
+
+    let serviceInterval;
 
     useEffect(() => {
+        getData();
+        serviceInterval = setInterval(getData, 5000);
+        return function () {
+            clearInterval(serviceInterval);
+        }
+    }, [maxAforo]);
+
+    function getData() {
         const promises = [
             fetch('http://localhost:4000/register/entrances')
                 .then(res => res.json()),
@@ -31,7 +41,7 @@ function Main({ maxAforo }) {
                     setLetPass(pass);
                 }
             });
-    }, [maxAforo]);
+    }
 
     return (
         <Fragment>
