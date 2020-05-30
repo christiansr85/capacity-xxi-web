@@ -1,10 +1,6 @@
 import React from 'react';
 
-function Footer() {
-    const apertura = '08:00';
-    const cierre = '20:00';
-    const maxAforo = '60';
-
+function Footer({ apertura, cierre, maxAforo }) {
     return (
         <footer>
             <div className="info">

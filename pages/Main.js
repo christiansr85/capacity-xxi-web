@@ -6,21 +6,32 @@ import imgIconsPeople from '../assets/img/icons-people.png';
 import imgEnter from '../assets/img/Enter.png';
 import imgExit from '../assets/img/Exit.png';
 
-function Main() {
+function Main({ maxAforo }) {
     const [aforoActual, setAforoActual] = useState(0);
     const [entradas, setEntradas] = useState(0);
     const [salidas, setSalidas] = useState(0);
-    const [maxAforo, setMaxAforo] = useState('60');
+    const [letPass, setLetPass] = useState();
 
     useEffect(() => {
-        fetch('http://localhost:4000/register/entrances')
-            .then(res => res.json())
-            .then(res => setEntradas(res.entrances));
-
-        fetch('http://localhost:4000/register/dismissals')
-            .then(res => res.json())
-            .then(res => setSalidas(res.dismissals));
-    }, []);
+        const promises = [
+            fetch('http://localhost:4000/register/entrances')
+                .then(res => res.json()),
+            fetch('http://localhost:4000/register/dismissals')
+                .then(res => res.json())
+        ]
+        Promise.all(promises)
+            .then(res => {
+                const entrances = res[0].entrances;
+                const dismissals = res[1].dismissals;
+                setEntradas(entrances);
+                setSalidas(dismissals);
+                setAforoActual(entrances + dismissals);
+                if (maxAforo !== null) {
+                    const pass = aforoActual < maxAforo;
+                    setLetPass(pass);
+                }
+            });
+    }, [maxAforo]);
 
     return (
         <Fragment>
@@ -50,7 +61,7 @@ function Main() {
 
 
                 <div>
-                    <TrafficLights pass="true" />
+                    <TrafficLights pass={letPass} />
                 </div>
 
             </div>
