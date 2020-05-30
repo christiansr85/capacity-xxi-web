@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import settings from './settings.json';
 
 const Context = React.createContext();
 
 function ContextProvider({ children }) {
     const [parameters, setParameters] = useState(null);
 
-    const urlParameters = 'http://localhost:4000/parameter';
+    const urlParameters = `${settings.baseUrl}/parameter`;
     useEffect(() => {
         fetch(urlParameters)
             .then(res => res.json())

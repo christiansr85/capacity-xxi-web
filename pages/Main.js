@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
+import settings from '../settings.json';
 
 import { Context } from '../Context';
 import TrafficLights from '../components/TrafficLights';
@@ -15,8 +16,8 @@ function Main() {
     const [letPass, setLetPass] = useState(null);
 
     const url = {
-        entrances: 'http://localhost:4000/register/entrances',
-        dismissals: 'http://localhost:4000/register/dismissals'
+        entrances: `${settings.baseUrl}/register/entrances`,
+        dismissals: `${settings.baseUrl}/register/dismissals`
     };
     const getData = () => {
         const promises = [
@@ -29,8 +30,8 @@ function Main() {
             .then(res => {
                 const entrances = res[0].entrances;
                 const dismissals = res[1].dismissals;
-                setEntradas(entrances);
-                setSalidas(dismissals);
+                setEntradas(entrances || 0);
+                setSalidas(dismissals || 0);
                 const occupation = entrances + dismissals;
                 setAforoActual(occupation);
                 if (maxAforo !== null) {
@@ -51,31 +52,35 @@ function Main() {
 
             <div className="main">
 
-                <div className="main__capacity">
-                    <span className="main__capacity-item">Ocupación:</span>
-                    <span className="main__capacity-item main__capacity-data">{aforoActual}</span>
-                    <span className="main__capacity-item">{aforoActual === 1 ? 'persona' : 'personas'}</span>
-                </div>
+                <div className="main__info">
 
-                <div>
-                    <img src={imgIconsPeople} height="200" width="200" />
-                </div>
-
-                <div className="access-counters">
-                    <div className="access-counters__item">
-                        <img src={imgEnter} height="100" width="100" />
-                        <span>Entradas</span>
-                        <span>{entradas}</span>
+                    <div className="main__capacity">
+                        <span className="main__capacity-item">Ocupación:</span>
+                        <span className="main__capacity-item main__capacity-data">{aforoActual}</span>
+                        <span className="main__capacity-item">{aforoActual === 1 ? 'persona' : 'personas'}</span>
                     </div>
-                    <div className="access-counters__item">
-                        <img src={imgExit} height="100" width="100" />
-                        <span>Salidas</span>
-                        <span>{salidas}</span>
+
+                    <div className="main__counters">
+                        <div>
+                            <img src={imgIconsPeople} height="200" width="200" />
+                        </div>
+
+                        <div className="access-counters">
+                            <div className="access-counters__item">
+                                <img src={imgEnter} height="100" width="100" />
+                                <span>Entradas</span>
+                                <span>{entradas}</span>
+                            </div>
+                            <div className="access-counters__item">
+                                <img src={imgExit} height="100" width="100" />
+                                <span>Salidas</span>
+                                <span>{salidas}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-
-                <div>
+                <div className="main__traffic-lights">
                     <TrafficLights pass={letPass} />
                 </div>
 
