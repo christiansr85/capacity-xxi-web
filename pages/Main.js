@@ -1,32 +1,28 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 
+import {Context} from '../Context';
 import TrafficLights from '../components/TrafficLights';
 
 import imgIconsPeople from '../assets/img/icons-people.png';
 import imgEnter from '../assets/img/Enter.png';
 import imgExit from '../assets/img/Exit.png';
 
-function Main({ maxAforo }) {
+function Main() {
+    const {maxAforo} = useContext(Context);
     const [aforoActual, setAforoActual] = useState(0);
     const [entradas, setEntradas] = useState(0);
     const [salidas, setSalidas] = useState(0);
     const [letPass, setLetPass] = useState(null);
 
-    let serviceInterval;
-
-    useEffect(() => {
-        getData();
-        serviceInterval = setInterval(getData, 5000);
-        return function () {
-            clearInterval(serviceInterval);
-        }
-    }, [maxAforo]);
-
-    function getData() {
+    const url = {
+        entrances: 'http://localhost:4000/register/entrances',
+        dismissals: 'http://localhost:4000/register/dismissals'
+    };
+    const getData = () => {
         const promises = [
-            fetch('http://localhost:4000/register/entrances')
+            fetch(url.entrances)
                 .then(res => res.json()),
-            fetch('http://localhost:4000/register/dismissals')
+            fetch(url.dismissals)
                 .then(res => res.json())
         ]
         Promise.all(promises)
@@ -35,13 +31,21 @@ function Main({ maxAforo }) {
                 const dismissals = res[1].dismissals;
                 setEntradas(entrances);
                 setSalidas(dismissals);
-                setAforoActual(entrances + dismissals);
+                const aforo = entrances + dismissals;
+                setAforoActual(aforo);
+                console.log(maxAforo);
                 if (maxAforo !== null) {
-                    const pass = aforoActual < maxAforo;
+                    const pass = aforo < maxAforo;
                     setLetPass(pass);
                 }
             });
     }
+
+    useEffect(() => {
+        getData();
+        const serviceInterval = setInterval(getData, 5000);
+        return () => clearInterval(serviceInterval);
+    }, [maxAforo]);
 
     return (
         <Fragment>
@@ -49,7 +53,8 @@ function Main({ maxAforo }) {
             <div className="main">
 
                 <div className="main__capacity">
-                    <span className="main__capacity-item">Aforo Actual</span><span className="main__capacity-item main__capacity-data">{aforoActual}</span>
+                    <span className="main__capacity-item">Aforo Actual</span>
+                    <span className="main__capacity-item main__capacity-data">{aforoActual}</span>
                 </div>
 
                 <div>
