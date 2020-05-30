@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 
-import {Context} from '../Context';
+import { Context } from '../Context';
 import TrafficLights from '../components/TrafficLights';
 
 import imgIconsPeople from '../assets/img/icons-people.png';
@@ -8,7 +8,7 @@ import imgEnter from '../assets/img/Enter.png';
 import imgExit from '../assets/img/Exit.png';
 
 function Main() {
-    const {maxAforo} = useContext(Context);
+    const { maxAforo } = useContext(Context);
     const [aforoActual, setAforoActual] = useState(0);
     const [entradas, setEntradas] = useState(0);
     const [salidas, setSalidas] = useState(0);
@@ -31,11 +31,10 @@ function Main() {
                 const dismissals = res[1].dismissals;
                 setEntradas(entrances);
                 setSalidas(dismissals);
-                const aforo = entrances + dismissals;
-                setAforoActual(aforo);
-                console.log(maxAforo);
+                const occupation = entrances + dismissals;
+                setAforoActual(occupation);
                 if (maxAforo !== null) {
-                    const pass = aforo < maxAforo;
+                    const pass = occupation < maxAforo;
                     setLetPass(pass);
                 }
             });
@@ -53,8 +52,9 @@ function Main() {
             <div className="main">
 
                 <div className="main__capacity">
-                    <span className="main__capacity-item">Aforo Actual</span>
+                    <span className="main__capacity-item">Ocupación:</span>
                     <span className="main__capacity-item main__capacity-data">{aforoActual}</span>
+                    <span className="main__capacity-item">{aforoActual === 1 ? 'persona' : 'personas'}</span>
                 </div>
 
                 <div>

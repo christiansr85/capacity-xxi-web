@@ -11,7 +11,7 @@ function Footer() {
                     Horario Apertura {apertura} - {cierre}
                 </p>
                 <p>
-                    Aforo Máximo {maxAforo}
+                    Aforo {maxAforo}
                 </p>
             </div>
         </footer>
