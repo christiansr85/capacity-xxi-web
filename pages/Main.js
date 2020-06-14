@@ -18,9 +18,9 @@ function Main() {
 
     const newRegister = (value) => {
         if (value === 1) {
-            setEntradas(ent => ent++);
+            setEntradas(ent => ent + 1);
         } else if (value === -1) {
-            setEntradas(sal => sal--);
+            setSalidas(sal => sal - 1);
         }
     }
 
@@ -41,6 +41,11 @@ function Main() {
                 const dismissals = parseInt(res[1].dismissals);
                 setEntradas(entrances || 0);
                 setSalidas(dismissals || 0);
+                const occ = entrances + dismissals;
+                if (maxAforo !== null) {
+                    const pass = maxAforo > occ;
+                    setLetPass(pass);
+                }
             });
     }
 
@@ -58,7 +63,12 @@ function Main() {
     }, [maxAforo]);
 
     useEffect(() => {
-        setOccupation(entradas - salidas)
+        const occ = entradas + salidas;
+        setOccupation(occ);
+        if (maxAforo !== null) {
+            const pass = maxAforo > occ;
+            setLetPass(pass);
+        }
     }, [entradas, salidas]);
 
     return (
